@@ -1,3 +1,13 @@
+@font-face {
+    font-family: headingFont;
+    src: url(RealHorrorRegular-zvpX.ttf);
+}
+
+@font-face {
+    font-family: textFont;
+    src: url(MetalMania-Zwnm.ttf);
+}
+
 body {
     background-color: black;
 }
@@ -7,7 +17,8 @@ h1
     color: white;
     text-align: center;
     font-size: 30px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: headingFont;
+    letter-spacing: 4px;
 }
 
 u
@@ -27,7 +38,8 @@ h2
     color: white;
     text-align: center;
     font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: headingFont;
+    letter-spacing: 2px;
 }
 
 p
@@ -35,5 +47,5 @@ p
     color: white;
     text-align: center;
     font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: textFont;
 }
