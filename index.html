@@ -10,16 +10,50 @@
 <body>
     <h1><b><u>Welcome to the official Unhinged website</u></b></h1>
     <div class="container">
-        <h2>Welcome</h2>
+        <h2><u>Welcome</u></h2>
         <p>Hi guys, this is the early stages of this. Most are just basic placeholders for now such as CSS (website style) fonts, and headings. I will continue to work on this in my free time and make this website better for everyone. Feel free to @ me in the snap group if you have a question or suggestion.</p>
     </div>
     <div class="container">
-        <h2>Web Updates</h2>
+        <h2><u>Web Updates</u>></h2>
         <div>
-            <p>- Updated Fonts</p>
-            <p>- New CSS added</p>
-            <p>- Updated git source</p>
+            <p>- Added new youtube upload additon.</p>
         </div>
     </div>
+    <div class="container">
+        <h2><u>Latest Youtube Upload</u></h2>
+        <div id="videos" class="video-container">
+            
+        </div>
+    </div>
+    <script>
+        const apiKey = 'AIzaSyBfPS4ARazSd1wVCFMzgci0or1Aa9Kb3TM';
+        const channelId = 'UCXl5LBpvSaZr2MRVuUUmpTA'; 
+    
+        async function fetchVideos() {
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=5`;
+    
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+    
+                const videoContainer = document.getElementById('videos');
+                videoContainer.innerHTML = '';
+    
+                data.items.forEach(item => {
+                    const videoElement = document.createElement('div');
+                    videoElement.classList.add('video');
+                    videoElement.innerHTML = `
+                        <iframe src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>${item.snippet.description}</p>
+                    `;
+                    videoContainer.appendChild(videoElement);
+                });
+            } catch (error) {
+                console.error('Error fetching videos:', error);
+            }
+        }
+    
+        window.onload = fetchVideos;
+    </script>
 </body>
 </html>
